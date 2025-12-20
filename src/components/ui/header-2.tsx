@@ -25,8 +25,8 @@ export function Header2() {
 		>
 			<div
 				className={cn(
-					"mx-auto flex h-16 max-w-full items-center justify-between border-b border-transparent px-4 transition-all ease-out",
-					scrolled && "md:top-4 h-14 max-w-5xl rounded-lg border bg-background/95 shadow-md backdrop-blur-lg supports-[backdrop-filter]:bg-background/50"
+					"mx-auto flex h-16 max-w-full items-center justify-between border-b px-4 transition-all duration-300 ease-out sticky top-2 z-50",
+					scrolled && "h-14 max-w-5xl rounded-lg border bg-background/95 shadow-md backdrop-blur-lg supports-[backdrop-filter]:bg-background/50 md:top-4"
 				)}
 			>
 					<Link href="/" className="flex items-center gap-2">
