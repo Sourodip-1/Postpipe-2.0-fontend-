@@ -2,14 +2,12 @@
 import React from 'react';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { useScroll } from '@/hooks/use-scroll';
 import Link from 'next/link';
 import { AuthButton } from '../layout/auth-button';
 import { Logo } from '../icons/logo';
 
 export function Header2() {
-	const [open, setOpen] = React.useState(false);
 	const scrolled = useScroll(10);
 
 	const links = [
@@ -19,88 +17,36 @@ export function Header2() {
 		{ href: "#docs", label: "Docs" },
 	  ];
 
-	React.useEffect(() => {
-		if (open) {
-			// Disable scroll
-			document.body.style.overflow = 'hidden';
-		} else {
-			// Re-enable scroll
-			document.body.style.overflow = '';
-		}
-
-		// Cleanup when component unmounts (important for Next.js)
-		return () => {
-			document.body.style.overflow = '';
-		};
-	}, [open]);
-
 	return (
 		<header
 			className={cn(
-				'sticky top-0 z-50 mx-auto w-full max-w-5xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out',
+				'sticky top-0 z-50 w-full border-b transition-all ease-out',
 				{
-					'bg-background/95 supports-[backdrop-filter]:bg-background/50 border-border backdrop-blur-lg md:top-4 md:max-w-4xl md:shadow':
-						scrolled && !open,
-					'bg-background/90': open,
+					'bg-background/95 supports-[backdrop-filter]:bg-background/50 border-border backdrop-blur-lg':
+						scrolled,
 				},
 			)}
 		>
-			<nav
-				className={cn(
-					'flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out',
-					{
-						'md:px-2': scrolled,
-					},
-				)}
-			>
-				<Link href="/" className="flex items-center gap-2">
-					<Logo className="size-6 text-primary" />
-					<span className="font-bold font-headline">PostPipe Pro</span>
-				</Link>
-				<div className="hidden items-center gap-2 md:flex">
-					{links.map((link, i) => (
-						<Link key={i} className={buttonVariants({ variant: 'ghost' })} href={link.href}>
-							{link.label}
-						</Link>
-					))}
-					<AuthButton />
-				</div>
-				<Button size="icon" variant="outline" onClick={() => setOpen(!open)} className="md:hidden">
-					<MenuToggleIcon open={open} className="size-5" duration={300} />
-				</Button>
-			</nav>
-
-			<div
-				className={cn(
-					'bg-background/90 fixed top-14 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y md:hidden',
-					open ? 'block' : 'hidden',
-				)}
-			>
-				<div
-					data-slot={open ? 'open' : 'closed'}
+			<div className="container mx-auto px-4">
+				<nav
 					className={cn(
-						'data-[slot=open]:animate-in data-[slot=open]:zoom-in-95 data-[slot=closed]:animate-out data-[slot=closed]:zoom-out-95 ease-out',
-						'flex h-full w-full flex-col justify-between gap-y-2 p-4',
+						'flex h-16 w-full items-center justify-between transition-all ease-out'
 					)}
 				>
-					<div className="grid gap-y-2">
-						{links.map((link) => (
-							<Link
-								key={link.label}
-								className={buttonVariants({
-									variant: 'ghost',
-									className: 'justify-start',
-								})}
-								href={link.href}
-							>
+					<Link href="/" className="flex items-center gap-2">
+						<Logo className="size-6 text-primary" />
+						<span className="font-bold font-headline">PostPipe Pro</span>
+					</Link>
+					<div className="hidden items-center gap-2 md:flex">
+						{links.map((link, i) => (
+							<Link key={i} className={buttonVariants({ variant: 'ghost' })} href={link.href}>
 								{link.label}
 							</Link>
 						))}
-					</div>
-					<div className="flex flex-col gap-2">
 						<AuthButton />
 					</div>
-				</div>
+					{/* Mobile menu can be added here if needed */}
+				</nav>
 			</div>
 		</header>
 	);
