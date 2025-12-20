@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 interface WordRotateProps {
   words: string[];
   duration?: number;
-  framerProps?: HTMLMotionProps<"h1">;
+  framerProps?: HTMLMotionProps<"span">;
   className?: string;
 }
 
@@ -35,15 +35,15 @@ export function WordRotate({
   }, [words, duration]);
 
   return (
-    <div className="overflow-hidden py-2">
+    <div className="overflow-hidden">
       <AnimatePresence mode="wait">
-        <motion.h1
+        <motion.span
           key={words[index]}
           className={cn(className)}
           {...framerProps}
         >
           {words[index]}
-        </motion.h1>
+        </motion.span>
       </AnimatePresence>
     </div>
   );

@@ -17,7 +17,7 @@ export function HeroParticles() {
 
   useEffect(() => {
     const currentTheme = theme === "system" ? systemTheme : theme
-    setColor(currentTheme === "dark" ? "#ffffff" : "#9D4EDD")
+    setColor(currentTheme === "dark" ? "#ffffff" : "#436cde")
   }, [theme, systemTheme])
 
 
@@ -41,7 +41,7 @@ export function HeroParticles() {
         </div>
       <Particles
         className="absolute inset-0 -z-10"
-        quantity={200}
+        quantity={280}
         ease={80}
         color={color}
         refresh
