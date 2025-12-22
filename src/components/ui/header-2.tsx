@@ -38,7 +38,7 @@ export function Header2() {
 					</Link>
 					<div className="hidden items-center gap-2 md:flex">
 						{links.map((link, i) => (
-							<Link key={i} className={buttonVariants({ variant: 'outline' })} href={link.href}>
+							<Link key={i} className={buttonVariants({ variant: 'link' })} href={link.href}>
 								{link.label}
 							</Link>
 						))}
