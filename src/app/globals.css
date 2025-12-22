@@ -112,4 +112,21 @@
   .btn-31:hover:before {
     --progress: 0%;
   }
+
+  .animated-underline {
+    @apply relative;
+  }
+  .animated-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: hsl(var(--foreground));
+    transition: width 0.3s ease-out;
+  }
+  .animated-underline:hover::after {
+    width: 100%;
+  }
 }
