@@ -131,7 +131,7 @@
   }
 
   .btn-pay {
-    @apply w-[140px] h-10 flex items-center justify-center bg-zinc-950 border border-zinc-800 text-white font-semibold gap-2 cursor-pointer shadow-lg relative overflow-hidden transition-all duration-300;
+    @apply h-[56px] px-8 flex items-center justify-center bg-zinc-950 border border-zinc-800 text-white font-black uppercase tracking-wider gap-2 cursor-pointer shadow-lg relative overflow-hidden transition-all duration-300;
   }
 
   .btn-pay .svgIcon {
@@ -143,7 +143,7 @@
   }
 
   .btn-pay::before {
-    @apply w-[140px] h-[140px] absolute content-[''] bg-white rounded-full left-[-100%] top-0 transition-all duration-300;
+    @apply w-[140px] h-[140px] absolute content-[''] bg-white rounded-full left-[-110%] top-0 transition-all duration-300;
     mix-blend-mode: difference;
   }
 

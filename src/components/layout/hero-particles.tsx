@@ -16,7 +16,7 @@ export function HeroParticles() {
 
   useEffect(() => {
     const currentTheme = theme === "system" ? systemTheme : theme
-    setColor(currentTheme === "dark" ? "#ffffff" : "#006aff")
+    setColor(currentTheme === "dark" ? "#ffffff" : "#000000")
   }, [theme, systemTheme])
 
 
